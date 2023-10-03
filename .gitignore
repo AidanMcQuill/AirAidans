@@ -363,4 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 #Prevents sensetive data from being pushed
- /appsettings.json
+ **/appsettings.json
+/AirAidans/appsettings.json
