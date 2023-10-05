@@ -1,0 +1,283 @@
+/* Google Font Rules */
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
+/* SITE WIDE STYLING  */
+
+/* To switch color schemes, just replace the hexes per category */
+
+/* Hex Codes
+#802BB1 PURPLE (HEADINGS / BUTTONS)
+#2D283E DARKER PURPLE (BG)
+#564F6F PLUM (IMAGE)
+#4C495D DARK GRAY (FOOTER STUFF / CARDS)
+#D1D7E0 LIGHT GRAY (BODY TEXT)
+
+*/
+
+html{
+    height: -webkit-fill-available;
+}
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #2D283E;
+    height: -webkit-fill-available;
+}
+
+div {
+    display: block;
+
+}
+
+h1 {
+
+    font-family: 'Raleway', sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: #D1D7E0;
+    padding: 0px;
+    margin: 0px;
+}
+
+h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 48px;
+    color: #D1D7E0;
+}
+h4 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #D1D7E0;
+}
+h5 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20ox;
+    font-weight: 700;
+    color: #D1D7E0;
+}
+/* Hide content for screens with a maximum width of 767px (typical for mobile devices) */
+@media screen and (max-width: 767px) {
+    /* Add CSS rules to hide the content here */
+    .mobile-hidden {
+      display: none;
+    }
+  }
+  .custom-line{
+
+    color: #D1D7E0;
+  }
+  
+
+/* HEADER STYLING */
+#header {
+    height: auto;
+    padding: 85px, 0 70px 0px;
+    background-color: #2D283E;
+}
+#header span {
+    font-weight: 700;
+}
+.nav-link{
+    color: #D1D7E0;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+
+
+.custom-navbar {
+    background-color:#2D283E;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 30%; /* Adjust as needed */
+    border-bottom-right-radius: 30%; /* Adjust as needed */
+
+}
+
+/* Navbar link color */
+.navbar-light .navbar-nav .nav-link {
+     color: #D1D7E0;
+    
+ }
+
+
+
+/* Color of active navbar link */
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link {
+    color: #aa5fd5;
+}
+
+ 
+.shadow{
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.8) !important;
+}
+  
+
+.custom-li{
+    color: #802BB1;
+    /* border-radius: 30px 0px 50px 30px; /* top-left, top-right, bottom-right, bottom-left */ 
+    /* background-color: #15122052; */
+    font-weight: 700;
+    padding: 0px 25px;
+    border-radius: 100%;
+}
+
+.custom-li a:hover {
+    background-color: #D1D7E0; /* Set the hover color to match the default color */
+    transition: 0s;
+    border-radius: 100%;
+}
+
+
+.custom-logo {
+    width: 30%;
+    font-family: 'Raleway', sans-serif;
+}
+.custom-highlight{
+    color: #802BB1;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.custom-btn {
+    
+    background-color: #802BB1;
+    opacity: 1;
+    transition: 1s;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.custom-btn:hover {
+    opacity: 0.7;
+    background-color:#aa5fd5 /* Your desired background color on hover */;
+    /* You can also set other styles like color, border, etc. */
+}
+
+.margin{
+    margin-top: 190px;
+}
+
+
+/* CARDS SETTINGS */
+ 
+
+.card-text{
+    font-weight: 600;
+}
+
+.card-title{
+    font-size: larger;
+    font-weight: 700;
+    font-style: oblique;
+}
+
+.custom-card{
+    min-height: 34vh;
+    color: #4C495D;
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+.card-body {
+    color: #2D283E;
+    font-weight: 400;
+} 
+
+
+.custom-footer{
+    background-color: transparent;
+    border: none;   
+}
+
+.custom-bg {
+    height: 350px;
+    background: #4C495D;
+    border-radius: 12px;
+}
+
+/* FOOTER */
+
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+.footerContainer{
+    background-color: #000000;
+    width: auto;
+    padding: 70px 30px 20px;
+}
+.SocialIcons{
+    display: flex;
+    justify-content: center;
+}
+.SocialIcons a{
+    text-decoration: none;
+    padding: 10px;
+    background-color: #2D283E;
+    margin: 10px;
+    border-radius: 50%;
+}
+.SocialIcons a i{
+
+    font-size: 2em;
+    color: #f1f1f1;
+    opacity: 0.9;
+}
+
+/* Footer hover effect */
+.SocialIcons a:hover{
+    background-color: #ffffff;
+    transition: 0.5s;
+}
+
+.SocialIcons a:hover i{
+    color: #111;
+    transition: 0.5s;
+}
+
+/* Footer Link List */
+.footerNav{
+    
+    margin: 30px 0 ;
+    width:auto;
+}
+.footerNav ul{
+    
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+.footerNav ul li a{
+    color: #D1D7E0;;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.footerNav ul li a:hover{
+    opacity: 1;
+}
+
+.footerBottom {
+    background-color: #272336;
+    color: #D1D7E0;
+    padding: 20px;
+    text-align: center;
+}
+
+.Designer{
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    margin: 0px 4px ;
+}

@@ -1,8 +1,151 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<main class="container pt-5">
+
+
+
+    <!-- HERO SECTION -->
+    <section id="cover" class="container">
+        <div class="row g-2 justify-content-around">
+
+            <!-- Left 6 columns -->
+            <div class="col-md-6 d-flex-justify-content-center align-items-center order-lg-2">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="/Assets/Temp Imgs/NEWHERO.png" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="#" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="#" alt="Third slide">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right 6 columns -->
+            <div class="col-md-6 d-flex-justify-content-center align-items-center order-lg-2">
+                <div class="margin">
+                    <h1 class="custom-highlight">AIR AIDAN'S</h1>
+                    <h2>Fashion Forward, Feet First.</h2>
+                    <button class="btn btn-primary rounded-3 custom-btn" type="button">Get Started</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CARD SECTION -->
+    <section id="products" class="mt-5">
+        <h2>Features</h2>
+        <br>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-60 shadow custom-card">
+                    <div class="card-body">
+                        <div class="card-title m-1"><i class="fa-solid fa-globe "></i><span style="padding-left: 10px;"></span>Shoe Database</div>
+                        <hr>
+                        <p class="card-text">
+                            This site features an extensive database containing a comprehensive collection of popular sneakers.
+                            It serves as a valuable resource for enthusiasts, providing detailed information on a wide range of coveted footwear options.
+                        </p>
+                    </div>
+                    <div class="card-footer custom-footer">
+                        <div class="float-start">
+                            <h4 class="custom-highlight"></h4>
+                        </div>
+                        <div class="float-end">
+                            <button class="btn btn-primary rounded-3 custom-btn ">Go To Browse</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-60 shadow custom-card">
+                    <div class="card-body">
+                        <div class="card-title m-1"><i class="fa-solid fa-briefcase"></i><span style="padding-left: 10px;"></span>Your Custom Locker</div>
+                        <hr>
+                        <p class="card-text">
+                            We offer users the opportunity to create their custom sneaker locker and calculate the total value of their sneaker collection.
+                            It provides a user-friendly platform for enthusiasts to curate their personal collection.
+                        </p>
+                    </div>
+                    <div class="card-footer custom-footer">
+                        <div class="float-start">
+                            <h4 class="custom-highlight"></h4>
+                        </div>
+                        <div class="float-end">
+                            <button class="btn btn-primary rounded-3 custom-btn ">Go To Locker</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-60 shadow custom-card">
+                    <div class="card-body">
+                        <div class="card-title m-1"><i class="fa-regular fa-user"></i><span style="padding-left: 10px;"></span>Just For You</div>
+                        <hr>
+                        <p class="card-text">
+                            Users can enhance their experience by adding preferences to their accounts, enabling them to discover new sneakers that perfectly match their unique style.
+                            Find sneaker releases that resonate with Your personal taste.
+                        </p>
+                    </div>
+                    <div class="card-footer custom-footer">
+                        <div class="float-start">
+                            <h4 class="custom-highlight"></h4>
+                        </div>
+                        <div class="float-end">
+                            <button class="btn btn-primary rounded-3 custom-btn ">Go To Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </sections>
+
+        <!-- Feature Cards: -->
+        <!-- <section id="features" class="mt-5">
+            <h2>Features</h2>
+            <div class="cards row row-cols-1 row-cols-md-3 g-4">
+
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                    </div>
+
+                  <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+
+                  <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+            </div>
+            </div>
+        </section> -->
+
+
+</main>
