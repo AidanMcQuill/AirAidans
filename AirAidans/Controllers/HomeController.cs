@@ -13,11 +13,34 @@ namespace AirAidans.Controllers
             _logger = logger;
         }
 
+        #region Main Actions 
         public IActionResult Index()
         {
             return View();
         }
 
+        public IActionResult Browse()
+        {
+            return View();
+        }
+
+        public IActionResult Locker()
+        {
+            return View();
+        }
+
+        public IActionResult Account()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        #endregion 
+
+        #region Extra Actions 
         public IActionResult Privacy()
         {
             return View();
@@ -28,5 +51,6 @@ namespace AirAidans.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        #endregion
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace [YourProjectName].UI.MVC.Models
+namespace AirAidans.Models
 {
     public class CreateRoleViewModel
     {

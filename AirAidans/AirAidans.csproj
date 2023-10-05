@@ -8,9 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Shared\OriginalLayout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Shared\OriginalLayout.cshtml.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Privacy.cshtml" />
     <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\OriginalLayout.cshtml" />
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
@@ -32,6 +41,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Air Aidan's.DATA.EF\Air Aidan's.DATA.EF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Assets\imgs\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Follow bootstrap intro page for the link tags needed below -->
@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
     <style>
-        @@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
       </style>
      <!----font awesome---->
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
@@ -31,7 +31,8 @@
             <div class="container container-fluid">
                 <div class="navbar-header">
                     <a href="#" class="navbar-brand float-end">
-                        
+                        <img src="/Assets/logos/logo.svg" alt="Air Aidan Logo" class="img-responsive custom-logo"> 
+                        <!-- Main Logo ^ -->
                         <span class="custom-highlight">AIR AIDAN'S</span>
                     </a>
                     <button class="navbar-toggler float-end" type="button" data-bs-toggle="collapse"
@@ -39,7 +40,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    
+
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ms-auto custom-ul">
@@ -64,7 +65,70 @@
         </nav>
     </header>
     
-    @RenderBody();
+    <main class="container pt-5">
+
+    
+    <!-- CARD SECTION -->
+    <section id="products" class="mt-5">
+        <h2>Nike</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 shadow custom-card">
+                    <img src="/Assets/Temp Imgs/image 5.png" alt="" class="card-img-top w-100 custom-bg border-3">
+                    <div class="card-body">
+                        <div class="card-title">Air Max 97</div>
+                        <p class="card-text">Lorem ipsum dolor siquam voluptate natus, unde provident alias!</p>
+                    </div>
+                    <div class="card-footer custom-footer">
+                        <div class="float-start">
+                            <h4 class="custom-highlight"></h4>
+                        </div>
+                        <div class="float-end">
+                            <button class="btn btn-primary rounded-3 custom-btn">Add To Locker</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 shadow custom-card">
+                    <img src="/Assets/Temp Imgs/image 5.png" alt="" class="card-img-top w-100 custom-bg border-3">
+                    <div class="card-body">
+                        <div class="card-title">Air Max 97</div>
+                        <p class="card-text">Lorem ipsum dolor siquam voluptate natus, unde provident alias!</p>
+                    </div>
+                    <div class="card-footer custom-footer">
+                        <div class="float-start">
+                            <h4 class="custom-highlight"></h4>
+                        </div>
+                        <div class="float-end">
+                            <button class="btn btn-primary rounded-3 custom-btn">Add To Locker</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 shadow custom-card">
+                    <img src="/Assets/Temp Imgs/image 5.png" alt="" class="card-img-top w-100 custom-bg border-3">
+                    <div class="card-body">
+                        <div class="card-title">Air Max 97</div>
+                        <p class="card-text">Lorem ipsum dolor siquam voluptate natus, unde provident alias!</p>
+                    </div>
+                    <div class="card-footer custom-footer">
+                        <div class="float-start">
+                            <h4 class="custom-highlight"></h4>
+                        </div>
+                        <div class="float-end">
+                            <button class="btn btn-primary rounded-3 custom-btn">Add To Locker</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sections>
+    
+</main>
 
 <!-- FOOTER -->
     <div class="FooterContainer mt-5">
