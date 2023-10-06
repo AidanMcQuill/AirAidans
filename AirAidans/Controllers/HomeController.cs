@@ -34,10 +34,6 @@ namespace AirAidans.Controllers
             return View();
         }
 
-        public IActionResult Contact()
-        {
-            return View();
-        }
         #endregion 
 
         #region Extra Actions 

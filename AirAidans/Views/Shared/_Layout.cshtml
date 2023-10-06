@@ -7,8 +7,8 @@
     <title>Air Aidan's</title>
 
     <!-- Bootstrap Link file -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">"
     <!-- Main Css -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- Google Font -->
@@ -17,10 +17,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
     <style>
         @@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
-      </style>
-     <!----font awesome---->
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+    </style>
+    <!----font awesome---->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -31,72 +31,72 @@
             <div class="container container-fluid">
                 <div class="navbar-header">
                     <a href="#" class="navbar-brand float-end">
-                        
+
                         <span class="custom-highlight">AIR AIDAN'S</span>
                     </a>
                     <button class="navbar-toggler float-end" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    
+
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ms-auto custom-ul">
                         <li class="nav-item custom-li">
-                            <a href="#" aria-current="page" class="nav-link active">Home</a>
+                            <a href="@Url.Action("Index","Home")" " aria-current="page" class="nav-link active">Home</a>
                         </li>
                         <li class="nav-item custom-li">
-                            <a href="#Locker" class="nav-link">Browse</a>
+                            <a href="@Url.Action("Browse","Home")" class="nav-link">Browse</a>
                         </li>
                         <li class="nav-item custom-li">
-                            <a href="#Locker" class="nav-link">Locker</a>
+                            <a href="@Url.Action("Locker","Home")" class="nav-link">Locker</a>
                         </li>
                         <li class="nav-item custom-li">
-                            <a href="#Account" class="nav-link">Account</a>
+                            <a href="@Url.Action("Account","Home")" class="nav-link">Account</a>
                         </li>
                         <li class="nav-item custom-li">
-                            <a href="#Contact" class="nav-link">Contact</a>
+                            <a href="@Url.Action("Index","Contact")" class="nav-link">Contact</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    
-    @RenderBody();
 
-<!-- FOOTER -->
+                            @RenderBody();
+
+    <!-- FOOTER -->
     <div class="FooterContainer mt-5">
         <hr class="custom-line">
-            <div class="SocialIcons">
-              
-                <a href=""><i class="fa-brands fa-github"></i></a>
-                <a href=""><i class="fa-solid fa-person"></i></a>
-                <a href=""><i class="fa-brands fa-linkedin"></i></a>
-            </div>
-            <div class="footerNav mobile-hidden">
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Browse</a></li>
-                    <li><a href="">Locker</a></li>
-                    <li><a href="">Account</a></li>
-                    <li><a href="">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footerBottom">
-                <p>Copyright &copy;2023: Designed by <span class="Designer">Aidan McQuillan</span></p>
-            </div>
+        <div class="SocialIcons">
+
+            <a href=""><i class="fa-brands fa-github"></i></a>
+            <a href=""><i class="fa-solid fa-person"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin"></i></a>
         </div>
-     
+        <div class="footerNav mobile-hidden">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Browse</a></li>
+                <li><a href="">Locker</a></li>
+                <li><a href="">Account</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2023: Designed by <span class="Designer">Aidan McQuillan</span></p>
+        </div>
+    </div>
+
 
 
 
 
 
     <!-- Bootstrap JS script -->
-    <script src= https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js 
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    
+    <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 </body>
 </html>
