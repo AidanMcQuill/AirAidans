@@ -40,11 +40,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Air Aidan's.DATA.EF\Air Aidan's.DATA.EF.csproj" />
+    <Folder Include="wwwroot\Assets\imgs\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Assets\imgs\" />
+    <ProjectReference Include="..\AirAidans.DATA.EF\AirAidans.DATA.EF.csproj" />
   </ItemGroup>
 
 </Project>
