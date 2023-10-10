@@ -1,5 +1,6 @@
 //using Air_Aidan_s.DATA.EF;
 using AirAidans.Data;
+using AirAidans.DATA.EF.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
@@ -18,12 +19,29 @@ namespace AirAidans
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            //Registering our new GadgetStore Database Context
+            builder.Services.AddDbContext<AirAidansContext>(options =>
+                options.UseSqlServer(connectionString));
+
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount =
                 true).AddRoles<IdentityRole>().AddRoleManager<RoleManager<IdentityRole>>
                 ().AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
+
+            #region Locker (a.k.a Shopping Cart)
+            builder.Services.AddSession(options =>
+            {
+                //the duration a session is stored in memory
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                //Allows us to set cookie options over unsecure connections 
+                options.Cookie.HttpOnly = true;
+                //Cannot be declined.
+                options.Cookie.IsEssential = true;
+            });
+            #endregion
 
             var app = builder.Build();
 
