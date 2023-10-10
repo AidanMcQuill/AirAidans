@@ -1,0 +1,76 @@
+﻿@model IEnumerable<AirAidans.DATA.EF.Models.Shoe>
+@{
+    ViewData["Title"] = ("Browse Shoes");
+}
+
+@*The main display will be for the browse tab.*@
+<section class="product_section layout_padding">
+
+    <div class="container">
+        
+
+        <div class="Header">
+            <h2>Browse <span>Sneakers</span></h2>
+
+            <p align="center">
+                @*TODO add rule secruity and extra functionallity for those roles*@
+                <a asp-action="TiledShoes">Card View</a>
+            </p>
+        </div>
+
+        <table class="table">
+            <thead> @*Display Names*@
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Brand)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Model)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShoeImage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sku)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Supplier)
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody> @*The actual shoes*@
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                             @Html.DisplayFor(modelItem => item.Brand)
+                        </td>
+                        <td>
+                             @Html.DisplayFor(modelItem => item.Model)
+                        </td>
+                        @*<td>
+                            <img src="~/images/@item.ShoeImage" class="img-fluid" alt="@item.ShoeDescription" />
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Brand)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Model)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+</section>
