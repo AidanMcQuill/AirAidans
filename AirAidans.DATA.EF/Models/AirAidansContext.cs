@@ -27,7 +27,7 @@ namespace AirAidans.DATA.EF.Models
         public virtual DbSet<Shoe> Shoes { get; set; } = null!;
         public virtual DbSet<Supplier> Suppliers { get; set; } = null!;
         public virtual DbSet<UserDetail> UserDetails { get; set; } = null!;
-        public virtual DbSet<UserPreference> UserPreferences { get; set; } = null!;
+       
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -242,30 +242,7 @@ namespace AirAidans.DATA.EF.Models
                 entity.Property(e => e.LockerId).HasMaxLength(50);
             });
 
-            modelBuilder.Entity<UserPreference>(entity =>
-            {
-                entity.HasKey(e => e.UserId);
-
-                entity.ToTable("UserPreference");
-
-                entity.Property(e => e.UserId)
-                    .HasMaxLength(128)
-                    .HasColumnName("UserID");
-
-                entity.Property(e => e.Brand)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Color)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.User)
-                    .WithOne(p => p.UserPreference)
-                    .HasForeignKey<UserPreference>(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_UserPreference_UserDetails");
-            });
+           
 
             OnModelCreatingPartial(modelBuilder);
         }

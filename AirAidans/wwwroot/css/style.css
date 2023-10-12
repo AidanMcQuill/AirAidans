@@ -67,7 +67,17 @@ h5 {
 
     color: #D1D7E0;
   }
+
+  /*BROWSE STYLING*/
+
+.t-text {
+   
+    text-align: inherit;
+    text-align: -webkit-match-parent;
+    color: white;
+}
   
+
 
 /* HEADER STYLING */
 #header {
