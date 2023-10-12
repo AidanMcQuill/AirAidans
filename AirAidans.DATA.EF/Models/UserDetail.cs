@@ -16,7 +16,7 @@ namespace AirAidans.DATA.EF.Models
         public string? Country { get; set; }
         public string LockerId { get; set; } = null!;
 
-        public virtual UserPreference? UserPreference { get; set; }
+        
         public virtual ICollection<Locker> Lockers { get; set; }
     }
 }
