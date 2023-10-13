@@ -6,19 +6,62 @@
 @if (SignInManager.IsSignedIn(User))
 {
 
-        <li class="nav-item custom-li">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
-}
+        <div class="dropdown">
+            <button class="btn btn-custom  drop-text dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Account
+            </button>
+            <ul class="dropdown-menu">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+
+        @if (User.IsInRole("Admin"));
+
+        <div class="dropdown">
+            <button class="btn btn-custom drop-text dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Admin
+            </button>
+            <ul class="dropdown-menu">
+                <li class="nav-item">
+                    <a href="@Url.Action("ListUsers", "Administration")">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("ListRoles", "Administration")">Roles</a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Suppliers")">Suppliers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index", "Categories")">Categories</a>
+                </li>
+                
+            </ul>
+        </div>
+    }
 else
 {
-        <li class="nav-item custom-li">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-        <li class="nav-item custom-li">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Account
+            </button>
+            <ul class="dropdown-menu">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </li>
+            </ul>
+        </div>
+
 }
 </ul>

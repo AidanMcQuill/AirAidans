@@ -171,8 +171,23 @@ h5 {
 }
 
 
-/* CARDS SETTINGS */
- 
+/****************** BOOTSTRAP IDENTITY SETTINGS *********************/
+
+.btn-custom {
+   padding: 10px;
+   background-color: #802BB1
+        
+}
+
+
+
+
+
+
+
+
+/****************** CARDS SETTINGS *********************/
+
 
 .card-text{
     font-weight: 600;
