@@ -70,7 +70,10 @@
                         @Html.DisplayFor(modelItem => item.ShoeDescription)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ShoeImage)
+                    
+                            @*@Html.DisplayFor(modelItem => item.ProductImage)*@
+                        <img src="~/images/@item.ShoeImage" class="img-fluid" alt="@item.ShoeDescription" />
+                    
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Price)

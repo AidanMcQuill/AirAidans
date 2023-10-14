@@ -6,17 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AirAidans.DATA.EF.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Drawing;
+using AirAidans.UI.MVC.Utilities;
 
 namespace AirAidans.Controllers
 {
     public class ShoesController : Controller
     {
-        private readonly AirAidansContext _context;
+        #region Connection Objects
 
-        public ShoesController(AirAidansContext context)
+        private readonly AirAidansContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public ShoesController(AirAidansContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
+        #endregion
 
         // GET: Shoes
         public async Task<IActionResult> Index()
@@ -48,7 +55,7 @@ namespace AirAidans.Controllers
         // GET: Shoes/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
             ViewData["SupplierId"] = new SelectList(_context.Suppliers, "SupplierId", "SupplierName");
             return View();
         }
@@ -58,10 +65,70 @@ namespace AirAidans.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Create([Bind("ShoeId,Brand,Model,Size,Color,Sku,CategoryId,SupplierId,ShoeDescription,ShoeImage,Price")] Shoe shoe)
         {
+
             if (ModelState.IsValid)
             {
+                #region File Upload - CREATE
+                //Check to see if a file was uploaded
+                if (shoe.ShoeImage != null)
+                {
+                    //Check the file type 
+                    //- retrieve the extension of the uploaded file
+                    string ext = Path.GetExtension(shoe.Image.FileName);
+
+                    //- Create a list of valid extensions to check against
+                    string[] validExts = { ".jpeg", ".jpg", ".gif", ".png" };
+
+                    //- verify the uploaded file has an extension matching one of the extensions in the list above
+                    //- AND verify file size will work with our .NET app
+                    if (validExts.Contains(ext.ToLower()) && shoe.ShoeImage.Length < 4_194_303)//underscores don't change the number, they just make it easier to read
+                    {
+                        //Generate a unique filename
+                        shoe.ShoeImage = Guid.NewGuid() + ext;
+
+                        //Save the file to the web server (here, saving to wwwroot/images)
+                        //To access wwwroot, add a property to the controller for the _webHostEnvironment (see the top of this class for our example)
+                        //Retrieve the path to wwwroot
+                        string webRootPath = _webHostEnvironment.WebRootPath;
+                        //variable for the full image path --> this is where we will save the image
+                        string fullImagePath = webRootPath + "/images/";
+
+                        //Create a MemoryStream to read the image into the server memory
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await shoe.Image.CopyToAsync(memoryStream);//transfer file from the request to server memory
+                            using (var img = Image.FromStream(memoryStream))//add a using statement for the Image class (using System.Drawing)
+                            {
+                                //now, send the image to the ImageUtility for resizing and thumbnail creation
+                                //items needed for the ImageUtility.ResizeImage()
+                                //1) (int) maximum image size
+                                //2) (int) maximum thumbnail image size
+                                //3) (string) full path where the file will be saved
+                                //4) (Image) an image
+                                //5) (string) filename
+                                int maxImageSize = 500;//in pixels
+                                int maxThumbSize = 100;
+
+                                ImageUtility.ResizeImage(fullImagePath, shoe.ShoeImage, img, maxImageSize, maxThumbSize);
+                            //myFile.Save("path/to/folder", "filename"); - how to save something that's NOT an image
+
+                           
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //If no image was uploaded, assign a default filename
+                    //Will also need to download a default image and name it 'noimage.png' -> copy it to the /images folder
+                   shoe.ShoeImage = "noimage.png";
+                }
+
+                #endregion
+
                 _context.Add(shoe);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -94,6 +161,7 @@ namespace AirAidans.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("ShoeId,Brand,Model,Size,Color,Sku,CategoryId,SupplierId,ShoeDescription,ShoeImage,Price")] Shoe shoe)
         {
             if (id != shoe.ShoeId)
@@ -102,12 +170,59 @@ namespace AirAidans.Controllers
             }
 
             if (ModelState.IsValid)
+                // The FK's are invalid causing changes to work. 
             {
+
+                #region EDIT File Upload
+                //retain old image file name so we can delete if a new file was uploaded
+                string oldImageName = shoe.ShoeImage;
+
+                //Check if the user uploaded a file
+                if (shoe.Image != null)
+                {
+                    //get the file's extension
+                    string ext = Path.GetExtension(shoe.Image.FileName);
+
+                    //list valid extensions
+                    string[] validExts = { ".jpeg", ".jpg", ".png", ".gif" };
+
+                    //check the file's extension against the list of valid extensions
+                    if (validExts.Contains(ext.ToLower()) && shoe.Image.Length < 4_194_303)
+                    {
+                        //generate a unique file name
+                        shoe.ShoeImage = Guid.NewGuid() + ext;
+                        //build our file path to save the image
+                        string webRootPath = _webHostEnvironment.WebRootPath;
+                        string fullPath = webRootPath + "/images/";
+
+                        //Delete the old image
+                        if (oldImageName != "noimage.png")
+                        {
+                            ImageUtility.Delete(fullPath, oldImageName);
+                        }
+
+                        //Save the new image to webroot
+                        using (var memoryStream = new MemoryStream())
+                        {
+                            await shoe.Image.CopyToAsync(memoryStream);
+                            using (var img = Image.FromStream(memoryStream))
+                            {
+                                int maxImageSize = 500;
+                                int maxThumbSize = 100;
+                                ImageUtility.ResizeImage(fullPath, shoe.ShoeImage, img, maxImageSize, maxThumbSize);
+                            }
+                        }
+
+                    }
+                }
+                #endregion
+
                 try
                 {
                     _context.Update(shoe);
                     await _context.SaveChangesAsync();
                 }
+
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!ShoeExists(shoe.ShoeId))
