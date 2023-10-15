@@ -22,7 +22,7 @@ namespace AirAidans.UI.MVC.Utilities
             //Clean up service
             newImage.Dispose(); newThumb.Dispose(); image.Dispose();
         }
-
+        
 
         public static int[] GetNewSize(int imgWidth, int imgHeight, int maxImgSize)
         {

@@ -9,6 +9,7 @@ using AirAidans.DATA.EF.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Drawing;
 using AirAidans.UI.MVC.Utilities;
+using Microsoft.AspNetCore.Http;
 
 namespace AirAidans.Controllers
 {
@@ -18,6 +19,7 @@ namespace AirAidans.Controllers
 
         private readonly AirAidansContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        
         public ShoesController(AirAidansContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
@@ -66,14 +68,14 @@ namespace AirAidans.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles ="Admin")]
-        public async Task<IActionResult> Create([Bind("ShoeId,Brand,Model,Size,Color,Sku,CategoryId,SupplierId,ShoeDescription,ShoeImage,Price")] Shoe shoe)
+        public async Task<IActionResult> Create([Bind("ShoeId,Brand,Model,Size,Color,Sku,CategoryId,SupplierId,ShoeDescription,ShoeImage,Image,Price")] Shoe shoe)
         {
 
             if (ModelState.IsValid)
             {
                 #region File Upload - CREATE
                 //Check to see if a file was uploaded
-                if (shoe.ShoeImage != null)
+                if (shoe.Image != null)
                 {
                     //Check the file type 
                     //- retrieve the extension of the uploaded file
@@ -84,7 +86,7 @@ namespace AirAidans.Controllers
 
                     //- verify the uploaded file has an extension matching one of the extensions in the list above
                     //- AND verify file size will work with our .NET app
-                    if (validExts.Contains(ext.ToLower()) && shoe.ShoeImage.Length < 4_194_303)//underscores don't change the number, they just make it easier to read
+                    if (validExts.Contains(ext.ToLower()) && shoe.Image.Length < 4_194_303)//underscores don't change the number, they just make it easier to read
                     {
                         //Generate a unique filename
                         shoe.ShoeImage = Guid.NewGuid() + ext;
@@ -113,9 +115,8 @@ namespace AirAidans.Controllers
                                 int maxThumbSize = 100;
 
                                 ImageUtility.ResizeImage(fullImagePath, shoe.ShoeImage, img, maxImageSize, maxThumbSize);
-                            //myFile.Save("path/to/folder", "filename"); - how to save something that's NOT an image
+                                //myFile.Save("path/to/folder", "filename"); - how to save something that's NOT an image
 
-                           
                             }
                         }
                     }
@@ -124,7 +125,7 @@ namespace AirAidans.Controllers
                 {
                     //If no image was uploaded, assign a default filename
                     //Will also need to download a default image and name it 'noimage.png' -> copy it to the /images folder
-                   shoe.ShoeImage = "noimage.png";
+                    shoe.ShoeImage = "noimage.jpg";
                 }
 
                 #endregion
@@ -162,7 +163,7 @@ namespace AirAidans.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles ="Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("ShoeId,Brand,Model,Size,Color,Sku,CategoryId,SupplierId,ShoeDescription,ShoeImage,Price")] Shoe shoe)
+        public async Task<IActionResult> Edit(int id, [Bind("ShoeId,Brand,Model,Size,Color,Sku,CategoryId,SupplierId,ShoeDescription,ShoeImage,Image,Price")] Shoe shoe)
         {
             if (id != shoe.ShoeId)
             {
@@ -214,6 +215,13 @@ namespace AirAidans.Controllers
                         }
 
                     }
+                }
+
+                {
+                    //If no image was uploaded, assign a default filename
+                    //Will also need to download a default image and name it 'noimage.png' -> copy it to the /images folder
+                    shoe.ShoeImage = "noimage.jpg";
+                    //Add modal that states that the image failed to edit. 
                 }
                 #endregion
 
