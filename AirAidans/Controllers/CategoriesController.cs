@@ -26,6 +26,22 @@ namespace AirAidans.Controllers
                           Problem("Entity set 'AirAidansContext.Categories'  is null.");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult AjaxCreate(Category category)
+        {
+            _context.Categories.Add(category);
+            _context.SaveChanges();
+            return Json(category);
+            //Right click inside this action -> Add View -> Razor View
+            //Name: CategoryCreate
+            //Template: Create
+            //Model: Category
+            //Context: GadgetStoreContext
+            //Check 'Create as partial view'
+        }
+
+
         // GET: Categories/Details/5
         public async Task<IActionResult> Details(int? id)
         {

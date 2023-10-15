@@ -4,12 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Categories:</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<div class="row">
+    <div align="center" class="offset-3 col-md-6 mb-3">
+        <button id="ToggleCategoryCreate" class="btn-primary btn">Add New Category</button>
+    </div>
+</div>
+
+<div id="CategoryCreate">
+    <partial name="CategoryCreate" model="new AirAidans.DATA.EF.Models.Category()" />
+</div>
+
+<div class="row">
+    <div class="offset-3 col-md-6">
+        <div id="MessageContent" class="text-center"></div>
+    </div>
+</div>
+
+<table class="table" id="CategoryTable">
     <thead>
         <tr>
             <th>
@@ -39,3 +52,65 @@
 }
     </tbody>
 </table>
+
+@*Create Ajax Model, fix later 
+<div class="modal fade" id="CategoryDetails" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+            </div>
+            <div class="modal-body" id="DetailsBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+@section Scripts {
+    <script>
+
+        //*********** AJAX CREATE ***********//
+        $("#CategoryCreate").hide();//The Create Form is hidden by default on load.
+        $("#ToggleCategoryCreate").on("click", function () {
+            $("#CategoryCreate").toggle();
+        });
+
+        //Summary: when the form is submitted, we serialize the data and then send that JSON to the Controller.
+        //MessageContent will display any updates for the user
+        //jQuery AJAX will:
+        //  - call the POST AjaxCreate() from the Categories controller
+        //  - pass json data from the form
+        //  - on failure, will notify user of error
+        //  - on success, will notify user, reset the form, insert the new row into the table on the page
+        $("#CategoryCreateForm").on("submit", function (e) {
+            e.preventDefault();
+            let formData = $(this).serializeArray();
+            console.log(formData);
+
+            $.ajax({
+                url: "/Categories/AjaxCreate",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                error: function (e) {
+                    $("#MessageContent").html("<div class='alert alert-danger'>Error Creating Category...</div>");
+                },
+                success: function (category) {
+                    $("#MessageContent").html("<div class='alert alert-success'>Shoe Category Created!</div>");
+                    $("#CategoryCreateForm")[0].reset();
+                    $(function () {
+                        let row = '<tr id="Category-' + category.categoryId + '"><td>' + category.categoryName
+                            + '</td><td>' + category.categoryDescription
+                            + '</td><td>Refresh page for options</td></tr>';
+                        $("#CategoriesTable").append(row);
+                        $("#CategoryCreate").hide();
+                    });
+                }
+            });
+        });
+    </script>
+}
