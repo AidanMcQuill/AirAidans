@@ -62,6 +62,10 @@ namespace AirAidans
 
             app.UseRouting();
 
+            // Implement the session service
+            app.UseSession();
+            //Critical: Must come AFTER UseRouting() and before UseAuthentication
+
             app.UseAuthentication();
             app.UseAuthorization();
 

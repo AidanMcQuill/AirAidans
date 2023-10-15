@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Drawing;
 using AirAidans.UI.MVC.Utilities;
 using Microsoft.AspNetCore.Http;
+using X.PagedList;
 
 namespace AirAidans.Controllers
 {
@@ -32,6 +33,66 @@ namespace AirAidans.Controllers
         {
             var airAidansContext = _context.Shoes.Include(s => s.Category).Include(s => s.Supplier);
             return View(await airAidansContext.ToListAsync());
+
+
+        }
+
+        //Card View
+        public async Task<IActionResult> ShoeCards(string searchTerm, int categoryId, int page = 1)
+        {
+            int pageSize = 6;
+
+            var products = _context.Shoes .Include(s => s.Category).Include(s => s.Supplier).Include(s => s.Lockers)
+                .ToList();
+
+            #region Optional Category Filter
+
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
+            ViewBag.Category = 0;
+
+            if (categoryId != 0)
+            {
+                //If the user selected a Category...
+                //(1) Filter the Products
+                products = products.Where(p => p.CategoryId == categoryId).ToList();
+
+                //(2) Repopulate the Dropdown with the chosen Category selected.
+                ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", categoryId);
+
+                //(3) Persist the Category in the ViewBag.
+                ViewBag.Category = categoryId;
+            }
+
+            #endregion
+
+            #region Optional Search Filter
+
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                //If we have a SearchTerm...
+                products = products
+                    .Where(s =>
+                    s.Model.ToLower().Contains(searchTerm.ToLower())
+                    || s.Supplier.SupplierName.ToLower().Contains(searchTerm.ToLower())
+                    || s.Category.CategoryName.ToLower().Contains(searchTerm.ToLower())
+                    || s.ShoeDescription.ToLower().Contains(searchTerm.ToLower()))
+                    .ToList();
+                ViewBag.NbrResults = products.Count;
+                ViewBag.SearchTerm = searchTerm;
+            }
+            else
+            {
+                //If we don't have a SearchTerm...
+                ViewBag.NbrResults = null;
+                ViewBag.SearchTerm = null;
+            }
+
+            #endregion
+
+            //return View(await products.ToListAsync());
+            //return View(products);
+            return View(products.ToPagedList(page, pageSize));
+
         }
 
         // GET: Shoes/Details/5

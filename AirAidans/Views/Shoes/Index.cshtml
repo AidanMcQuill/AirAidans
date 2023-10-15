@@ -6,91 +6,107 @@
 
 <h1>Index</h1>
 
+<p align="center">
+    <a asp-action="ShoeCards" class="btn btn-primary text-center w-50 d-block">Reveal the cards?</a>
+</p>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<div class="Container">
+<section>
 
-    <table class="table t-text">
-        <thead>
-            <tr class="t-text">
-                <th>
-                    @Html.DisplayNameFor(model => model.Brand)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Model)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Size)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Color)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Sku)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ShoeDescription)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ShoeImage)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Supplier)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Brand)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Model)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Size)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Color)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Sku)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ShoeDescription)
-                    </td>
-                    <td>
-                    
-                            @*@Html.DisplayFor(modelItem => item.ProductImage)*@
-                        <img src="~/Assets/images/@item.ShoeImage" class="img-fluid" alt="No Image Found" />
-                    
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category.CategoryId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.ShoeId">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.ShoeId">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ShoeId">Delete</a>
-                    </td>
+    <div class="Container">
+        <table class="table t-text">
+            <thead>
+                <tr class="t-text">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Brand)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Model)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Size)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Color)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Sku)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShoeDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ShoeImage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Supplier)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Brand)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Model)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Size)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Color)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sku)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShoeDescription)
+                        </td>
+                        <td>
+
+                            @*@Html.DisplayFor(modelItem => item.ProductImage)*@
+                            <img src="~/Assets/images/@item.ShoeImage" class="img-fluid" alt="No Image Found" />
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.CategoryId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ShoeId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.ShoeId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.ShoeId">Delete</a>
+                            <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.ShoeId">Add To Cart </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            //Update the selector to target the element with the table class
+            $('.table').DataTable();
+        });
+    </script>
+}
