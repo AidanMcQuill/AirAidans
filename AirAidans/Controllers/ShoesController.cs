@@ -157,7 +157,7 @@ namespace AirAidans.Controllers
                         //Retrieve the path to wwwroot
                         string webRootPath = _webHostEnvironment.WebRootPath;
                         //variable for the full image path --> this is where we will save the image
-                        string fullImagePath = webRootPath + "/images/";
+                        string FullImagePath = webRootPath + "/Assets/images/";
 
                         //Create a MemoryStream to read the image into the server memory
                         using (var memoryStream = new MemoryStream())
@@ -175,7 +175,7 @@ namespace AirAidans.Controllers
                                 int maxImageSize = 500;//in pixels
                                 int maxThumbSize = 100;
 
-                                ImageUtility.ResizeImage(fullImagePath, shoe.ShoeImage, img, maxImageSize, maxThumbSize);
+                                ImageUtility.ResizeImage(FullImagePath, shoe.ShoeImage, img, maxImageSize, maxThumbSize);
                                 //myFile.Save("path/to/folder", "filename"); - how to save something that's NOT an image
 
                             }
@@ -255,7 +255,7 @@ namespace AirAidans.Controllers
                         shoe.ShoeImage = Guid.NewGuid() + ext;
                         //build our file path to save the image
                         string webRootPath = _webHostEnvironment.WebRootPath;
-                        string fullPath = webRootPath + "/images/";
+                        string fullPath = webRootPath + "/Assets/images/";
 
                         //Delete the old image
                         if (oldImageName != "noimage.png")
@@ -278,12 +278,7 @@ namespace AirAidans.Controllers
                     }
                 }
 
-                {
-                    //If no image was uploaded, assign a default filename
-                    //Will also need to download a default image and name it 'noimage.png' -> copy it to the /images folder
-                    shoe.ShoeImage = "noimage.jpg";
-                    //Add modal that states that the image failed to edit. 
-                }
+              
                 #endregion
 
                 try

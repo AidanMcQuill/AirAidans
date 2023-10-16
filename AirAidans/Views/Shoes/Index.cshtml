@@ -9,7 +9,6 @@
 <p align="center">
     <a asp-action="ShoeCards" class="btn btn-primary text-center w-50 d-block">Reveal the cards?</a>
 </p>
-
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -77,8 +76,8 @@
                         <td>
 
                             @*@Html.DisplayFor(modelItem => item.ProductImage)*@
-                            <img src="~/Assets/images/@item.ShoeImage" class="img-fluid" alt="No Image Found" />
-
+                            <img src="~/Assets/images/t_@item.ShoeImage" class="img-fluid" alt="No Image Found" />
+                            @*Go back and change the css to ignore thumbnails.*@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Price)
