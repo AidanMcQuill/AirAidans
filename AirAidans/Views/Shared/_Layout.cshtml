@@ -64,64 +64,7 @@
                             <a href="@Url.Action("Index","Shoes")" class="nav-link">Browse</a>
                         </li>
 
-                        @*
-                        <li class="nav-item custom-li">
-                        <a href="@Url.Action("Locker","Home")" class="nav-link">Locker</a>
-                        </li>
-                        *@
-
-                        @*
-                        <li class="nav-item custom-li">
-                        <a href="@Url.Action("Account","Home")" class="nav-link">Account</a>
-                        </li>
-                        *@
-
-                        @*
-                        @if (User.IsInRole(""))
-                        
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                                <span class="nav-label">
-                                    Admin
-                                    <span class="caret"></span>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("ListUsers", "Administration")">Users</a></li>
-
-                                <li><a href="@Url.Action("ListRoles", "Administration")">Roles</a></li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Suppliers")">Suppliers</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Index", "Categories")">Categories</a>
-                                </li>
-                                <li>
-                                    <a href="@Url.Action("Index", "OrderProducts")">Products in Orders</a>
-                                </li>
-                            </ul>
-                        </li>
-*@
-
-                        @*  @if (signInManager.IsSignedIn(User))
-                        {
-                        <li class="nav-item custom-li">
-                        <a class="nav-link" asp-area="Identity" asp-page="\Account\Manage\">Account</a>
-                        </li>
-
-                        }
-                        else
-                        {
-                        <li class="nav-item custom-li">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                        </li>
-
-                        <li class="nav-item custom-li">
-                        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
-                        </li>
-                        }
-                        *@
+                      
                         <partial name="_LoginPartial" />
 
 
