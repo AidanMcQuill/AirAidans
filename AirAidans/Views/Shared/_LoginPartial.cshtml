@@ -3,13 +3,31 @@
 @inject UserManager<IdentityUser> UserManager
 
 <ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-
+    @if (SignInManager.IsSignedIn(User))
+    {
+@*
         <div class="dropdown">
-            <button class="btn btn-custom  drop-text dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn account-btn drop-text dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Account
             </button>
+            <ul class="dropdown-menu">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+                </li>
+                <li class="nav-item">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>*@
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Account
+
+            </button>
+            @*nav navbar-nav ms-auto custom-ul"*@
             <ul class="dropdown-menu">
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
@@ -23,14 +41,33 @@
         </div>
 
 
-        @if (User.IsInRole("Admin"));
+        @if (User.IsInRole("Admin")) ;
+
 
         <div class="dropdown">
-            <button class="btn btn-custom drop-text dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Admin
             </button>
-            <ul class="dropdown-menu">
-                <li class="nav-item nav-custom">
+            @*nav navbar-nav ms-auto custom-ul"*@
+            <ul class="dropdown-menu ">
+                <li class="nav-item">
+                    <a href="@Url.Action("ListUsers", "Administration")" aria-current="page" class="nav-link text-dark">Users</a>
+                </li>
+                <li class="nav-item ">
+                    <a href="@Url.Action("ListRoles", "Administration")" class="nav-link link-text text-dark">Roles</a>
+                </li>
+                <li class="nav-item ">
+                    <a href="@Url.Action("Index", "Suppliers")" class="nav-link link-text text-dark">Suppliers</a>
+                </li>
+                <li class="nav-item ">
+                    <a href="@Url.Action("Index", "Categories")" class="nav-link link-text text-dark">Categories
+
+                    </a>
+                </li>
+
+            </ul>
+            @*<ul class="dropdown-menu">
+                <li class="nav-item ">
                     <a href="@Url.Action("ListUsers", "Administration")">Users</a>
                 </li>
                 <li class="nav-item">
@@ -42,17 +79,19 @@
                 <li class="nav-item">
                     <a href="@Url.Action("Index", "Categories")">Categories</a>
                 </li>
-                
-            </ul>
+            </ul>*@
         </div>
-    }
-else
-{
 
+
+    }
+    else
+    {
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Account
+
             </button>
+            @*nav navbar-nav ms-auto custom-ul"*@
             <ul class="dropdown-menu">
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
@@ -63,5 +102,15 @@ else
             </ul>
         </div>
 
-}
+        <div class="">
+            <button class="btn " type="button" aria-expanded="false">
+                LOCKED
+
+            </button>
+
+        </div>
+
+        
+    }
 </ul>
+a

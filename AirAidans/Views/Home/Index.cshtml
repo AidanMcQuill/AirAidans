@@ -33,7 +33,7 @@
                 <div class="margin">
                     <h1 class="custom-highlight">AIR AIDAN'S</h1>
                     <h2>Fashion Forward, Feet First.</h2>
-                    <button class="btn btn-primary rounded-3 custom-btn" type="button">Get Started</button>
+                    <a class="btn-primary rounded-3 custom-btn" type="button" asp-area="Identity" asp-page="/Account/Login">Get Started</a>
                 </div>
             </div>
 
@@ -63,7 +63,7 @@
                             <h4 class="custom-highlight"></h4>
                         </div>
                         <div class="float-end">
-                            <button class="btn btn-primary rounded-3 custom-btn ">Go To Browse</button>
+                            <a href="@Url.Action("Index","Shoes")" class="btn btn-primary rounded-3 custom-btn ">Go To Browse</a>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                             <h4 class="custom-highlight"></h4>
                         </div>
                         <div class="float-end">
-                            <button class="btn btn-primary rounded-3 custom-btn ">Go To Locker</button>
+                            <a href="@Url.Action("Index","ShoppingCart")" class="btn btn-primary rounded-3 custom-btn ">Go To Locker</a>
                         </div>
                     </div>
                 </div>
