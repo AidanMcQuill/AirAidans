@@ -1,8 +1,23 @@
-﻿@inject SignInManager<IdentityUser> SignInManager
+﻿<style>
+    /* Define the hover color for navigation links */
+    .nav-link:hover {
+        color: white; /* Change 'red' to your desired hover color */
+        .active-link .active-link
+
+    }
+    .active-link {
+        background-color: #D1D7E0; /* Change to your desired background color */
+        color: #fff; /* Change to the desired text color */
+
+    }
+    
+</style>
+
+@inject SignInManager<IdentityUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
-<ul class="nav nav-pills flex-column">
+<ul class="nav nav-pills flex-column m-5">
     <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
     <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
     <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>

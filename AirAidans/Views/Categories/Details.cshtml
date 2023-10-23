@@ -4,12 +4,13 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Category</h4>
-    <hr />
-    <dl class="row">
+<div class="center-content">
+    <!-- Centering the content -->
+    <h1 class="heading-text">Details</h1>
+
+    <div class="container">
+    <dl class="row t-text">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CategoryName)
         </dt>
@@ -24,7 +25,7 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.CategoryId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="form-group text-center">
+        <a asp-action="Index" class="btn btn-danger">Back To List</a>
+    </div>
+

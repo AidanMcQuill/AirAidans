@@ -6,12 +6,12 @@
     ViewData["Title"] = "List Roles";
 }
 
-<h1>Roles</h1>
-
+<h2 class="mt-5 text-center">All Roles</h2>
+<hr />
 
 @if (Model.Any())
 {
-    <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole"
+    <a class="btn custom-btn mb-3" style="width:auto" asp-action="CreateRole"
    asp-controller="administration">Add new role</a>
 
     foreach (var role in Model)
@@ -21,20 +21,20 @@
                 Role Id : @role.Id
             </div>
             <div class="card-body">
-                <h5 class="card-title">@role.Name</h5>
+                <h5 class="card-title" style="color:#802BB1">@role.Name</h5>
             </div>
             <div class="card-footer">
 
                 <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
-                    <a asp-controller="Administration" asp-action="EditRole" asp-route-id="@role.Id" class="btn btn-primary">Edit</a>
+                    <a asp-controller="Administration" asp-action="EditRole" asp-route-id="@role.Id" class="btn custom-btn">Edit</a>
                     <span id="confirmDeleteSpan_@role.Id" style="display:none">
                         <span>Are you sure you want to delete?</span>
                         <button type="submit" class="btn btn-danger">Yes</button>
-                        <a href="#" class="btn btn-primary" onclick="confirmDelete('@role.Id', false)">No</a>
+                        <a href="#" class="btn custom-btn" onclick="confirmDelete('@role.Id', false)">No</a>
                     </span>
 
                     <span id="deleteSpan_@role.Id">
-                        <a href="#" class="btn btn-danger" onclick="confirmDelete('@role.Id', true)">Delete</a>
+                        <a href="#" class="btn custom-btn" onclick="confirmDelete('@role.Id', true)">Delete</a>
                     </span>
                 </form>
             </div>

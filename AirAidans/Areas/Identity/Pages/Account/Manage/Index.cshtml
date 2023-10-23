@@ -4,26 +4,34 @@
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
+<div class="account-container">
 
-<h3>@ViewData["Title"]</h3>
+<h3 class="t-text">@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
-<div class="row">
-    <div class="col-md-6">
+<hr />
+
+    <div class="container row text-center">
+        <div class="col-md-6">
+
         <form id="profile-form" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Username" class="form-control" disabled />
-                <label asp-for="Username" class="form-label"></label>
+
+            <div class="form-floating m-1">
+                <input asp-for="Username" class="form-control f-text" disabled />
+                <label asp-for="Username" class="form-label f-text"></label>
             </div>
-            <div class="form-floating">
+
+            <div class="form-floating m-1">
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <label asp-for="Input.PhoneNumber" class="form-label"></label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
-            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+
+            <button id="update-profile-button" type="submit" class=" btn custom-btn mx-auto">Save</button>
         </form>
+        </div>
     </div>
-</div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

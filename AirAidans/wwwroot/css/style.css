@@ -15,9 +15,10 @@
 
 */
 
-html{
+html {
     height: -webkit-fill-available;
 }
+
 body {
     font-family: 'Raleway', sans-serif;
     background-color: #2D283E;
@@ -26,11 +27,9 @@ body {
 
 div {
     display: block;
-
 }
 
 h1 {
-
     font-family: 'Raleway', sans-serif;
     font-size: 80px;
     font-weight: 700;
@@ -44,137 +43,180 @@ h2 {
     font-size: 48px;
     color: #D1D7E0;
 }
+
 h4 {
     font-family: 'Raleway', sans-serif;
     font-size: 24px;
     font-weight: 700;
     color: #D1D7E0;
 }
+
 h5 {
     font-family: 'Raleway', sans-serif;
     font-size: 20ox;
     font-weight: 700;
     color: #D1D7E0;
 }
+
+hr {
+    color: white;
+}
 /* Hide content for screens with a maximum width of 767px (typical for mobile devices) */
 @media screen and (max-width: 767px) {
     /* Add CSS rules to hide the content here */
     .mobile-hidden {
-      display: none;
+        display: none;
     }
-  }
-  .custom-line{
+}
 
+
+.custom-line {
     color: #D1D7E0;
-  }
+}
 
-  /*BROWSE STYLING*/
+/*BROWSE STYLING*/
+.alert-custom {
+    background-color: #aa5fd5;
+}
+
+
+.heading-text {
+    text-align: center;
+    padding-top: 20px;
+    margin: 20px;
+    color: #802BB1;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+
 
 .t-text {
-   
-    text-align: inherit;
-    text-align: -webkit-match-parent;
     color: white;
 }
-  
 
+.f-text {
+    color: black;
+}
 
+.custom-form {
+    background-color: #aa5fd5;
+}
 /* HEADER STYLING */
 #header {
     height: auto;
     padding: 85px, 0 70px 0px;
     background-color: #2D283E
 }
-#header span {
-    font-weight: 700;
-}
-.nav-link{
-    color: #aa5fd5;
+
+    #header span {
+        font-weight: 700;
+    }
+
+.nav-link {
+    color: black;
     opacity: 0.7;
     transition: 0.5s;
 }
 
-.link-text{
-    color: #000000;
+.link-text {
+    color: #802BB1;
+    font-weight: 800;
     text-shadow: inherit:
 }
 
 .nav-link a:hover {
     color: #2D283E
 }
+
 .custom-navbar {
     display: inline-block;
-    background-color:#2D283E;
+    background-color: #2D283E;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 30%; /* Adjust as needed */
     border-bottom-right-radius: 30%; /* Adjust as needed */
-
 }
 
 /* Navbar link color */
 .navbar-light .navbar-nav .nav-link {
-     color: #D1D7E0;
-    
- }
+    color: #D1D7E0;
+}
 
     .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
         color: rgba(0,0,0,.7);
     }
 
-/* Color of active navbar link */
-.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link {
-    color: #aa5fd5;
-}
+    /* Color of active navbar link */
+    .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show > .nav-link {
+        color: #aa5fd5;
+    }
 
 .navbar-nav ul li {
     margin: 10px;
 }
 
 
-.shadow{
+.shadow {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.8) !important;
 }
-  
 
-.custom-li{
+
+.custom-li {
     color: #802BB1;
-    /* border-radius: 30px 0px 50px 30px; /* top-left, top-right, bottom-right, bottom-left */ 
+    /* border-radius: 30px 0px 50px 30px; /* top-left, top-right, bottom-right, bottom-left */
     /* background-color: #15122052; */
     font-weight: 700;
     padding: 0px 25px;
     border-radius: 100%;
 }
 
-.custom-li a:hover {
-    background-color: #D1D7E0; /* Set the hover color to match the default color */
-    transition: 0s;
-    border-radius: 100%;
-}
+    .custom-li a:hover {
+        background-color: #D1D7E0; /* Set the hover color to match the default color */
+        transition: 0s;
+        border-radius: 100%;
+    }
 
 
 .custom-logo {
     width: 30%;
     font-family: 'Raleway', sans-serif;
 }
-.custom-highlight{
+
+.custom-highlight {
     color: #802BB1;
     font-size: larger;
     font-weight: bold;
 }
 
-.btn {
-    margin-left: 20px;
+.highlight-container {
+    position: relative;
 }
 
+.purple-highlight {
+    background: radial-gradient(circle at center, rgba(128, 43, 177, 0.5), transparent 50%);
+    height: 200px; /* Adjust the height as needed */
+    position: absolute;
+    width: 100%;
+    top: 175px; /* Adjust the top value to position it vertically */
+    z-index: -1; /* Place it behind the content */
+    border-radius: 10px; /* Add rounded corners for a soft glow */
+    box-shadow: 0 0 20px rgba(128, 43, 177, 0.5); /* Box shadow for the glow effect */
+}
+
+
+
+
+
+
 .custom-btn {
-    
     background-color: #802BB1;
     opacity: 1;
     transition: 1s;
     padding: 10px;
     border: none;
     outline: none;
+    color: #D1D7E0
 }
 
 .account-btn {
@@ -186,13 +228,50 @@ h5 {
     outline: none;
 }
 
-.custom-btn:hover {
+/************************SHOE CARDS**********************************/
+
+.shoe-inner-box .icons {
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    top: -3%;
+    transition: all 0.2s ease-in-out, transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    opacity: 0;
+}
+
+.shoe-inner-box .icons a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius; 50%;
+    background-color: white;
+}
+
+.shoe-inner-box img{
+    box-shadow: 0 33px 61px -29x rgb(0 0 0 / 26%);
+    object-fit: cover;
+}
+
+
+.card-img {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+
+
+    /**********************************************************************************************/
+
+    .custom-btn:hover {
     opacity: 0.7;
-    background-color:#aa5fd5 /* Your desired background color on hover */;
+    background-color: #aa5fd5 /* Your desired background color on hover */;
     /* You can also set other styles like color, border, etc. */
 }
 
-.margin{
+.margin {
     margin-top: 190px;
 }
 
@@ -210,17 +289,17 @@ h5 {
 /****************** CARDS SETTINGS *********************/
 
 
-.card-text{
+.card-text {
     font-weight: 600;
 }
 
-.card-title{
+.card-title {
     font-size: larger;
     font-weight: 700;
     font-style: oblique;
 }
 
-.custom-card{
+.custom-card {
     min-height: 34vh;
     color: #4C495D;
     border-radius: 20px;
@@ -232,12 +311,12 @@ h5 {
 .card-body {
     color: #2D283E;
     font-weight: 400;
-} 
+}
 
 
-.custom-footer{
+.custom-footer {
     background-color: transparent;
-    border: none;   
+    border: none;
 }
 
 .custom-bg {
@@ -248,70 +327,73 @@ h5 {
 
 /* FOOTER */
 
-*{
+* {
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
 }
 
-.footerContainer{
+.footerContainer {
     background-color: #000000;
     width: auto;
     padding: 70px 30px 20px;
 }
-.SocialIcons{
+
+.SocialIcons {
     display: flex;
     justify-content: center;
 }
-.SocialIcons a{
-    text-decoration: none;
-    padding: 10px;
-    background-color: #2D283E;
-    margin: 10px;
-    border-radius: 50%;
-}
-.SocialIcons a i{
 
-    font-size: 2em;
-    color: #f1f1f1;
-    opacity: 0.9;
-}
+    .SocialIcons a {
+        text-decoration: none;
+        padding: 10px;
+        background-color: #2D283E;
+        margin: 10px;
+        border-radius: 50%;
+    }
 
-/* Footer hover effect */
-.SocialIcons a:hover{
-    background-color: #ffffff;
-    transition: 0.5s;
-}
+        .SocialIcons a i {
+            font-size: 2em;
+            color: #f1f1f1;
+            opacity: 0.9;
+        }
 
-.SocialIcons a:hover i{
-    color: #111;
-    transition: 0.5s;
-}
+        /* Footer hover effect */
+        .SocialIcons a:hover {
+            background-color: #ffffff;
+            transition: 0.5s;
+        }
+
+            .SocialIcons a:hover i {
+                color: #111;
+                transition: 0.5s;
+            }
 
 /* Footer Link List */
-.footerNav{
-    
-    margin: 30px 0 ;
-    width:auto;
-}
-.footerNav ul{
-    
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-}
-.footerNav ul li a{
-    color: #D1D7E0;;
-    margin: 20px;
-    text-decoration: none;
-    font-size: 1.3em;
-    opacity: 0.7;
-    transition: 0.5s;
+.footerNav {
+    margin: 30px 0;
+    width: auto;
 }
 
-.footerNav ul li a:hover{
-    opacity: 1;
-}
+    .footerNav ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+    }
+
+        .footerNav ul li a {
+            color: #D1D7E0;
+            ;
+            margin: 20px;
+            text-decoration: none;
+            font-size: 1.3em;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+
+            .footerNav ul li a:hover {
+                opacity: 1;
+            }
 
 .footerBottom {
     background-color: #272336;
@@ -320,10 +402,10 @@ h5 {
     text-align: center;
 }
 
-.Designer{
+.Designer {
     opacity: 0.8;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 500;
-    margin: 0px 4px ;
+    margin: 0px 4px;
 }

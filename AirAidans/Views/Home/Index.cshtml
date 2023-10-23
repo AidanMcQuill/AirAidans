@@ -32,8 +32,10 @@
             <div class="col-md-6 d-flex-justify-content-center align-items-center order-lg-2">
                 <div class="margin">
                     <h1 class="custom-highlight">AIR AIDAN'S</h1>
-                    <h2>Fashion Forward, Feet First.</h2>
-                    <a class="btn-primary rounded-3 custom-btn" type="button" asp-area="Identity" asp-page="/Account/Login">Get Started</a>
+                    
+                        <h2>Fashion Forward, Feet First.</h2>
+                    
+                    <a class="btn custom-btn " type="button" asp-area="Identity" asp-page="/Account/Login">Get Started</a>
                 </div>
             </div>
 
@@ -43,111 +45,97 @@
     </section>
 
 
+
     <!-- CARD SECTION -->
     <section id="products" class="mt-5">
-        <h2>Features</h2>
-        <br>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card h-60 shadow custom-card">
-                    <div class="card-body">
-                        <div class="card-title m-1"><i class="fa-solid fa-globe "></i><span style="padding-left: 10px;"></span>Shoe Database</div>
-                        <hr>
-                        <p class="card-text">
-                            This site features an extensive database containing a comprehensive collection of popular sneakers.
-                            It serves as a valuable resource for enthusiasts, providing detailed information on a wide range of coveted footwear options.
-                        </p>
-                    </div>
-                    <div class="card-footer custom-footer">
-                        <div class="float-start">
-                            <h4 class="custom-highlight"></h4>
+        <div class="highlight-container">
+            <div class="purple-highlight"></div> <!-- Purple highlighted bar -->
+            <h2>Features</h2>
+            <hr />
+            <br>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-60 shadow custom-card">
+                        <div class="card-body">
+                            <div class="card-title m-1"><i class="fa-solid fa-globe "></i><span style="padding-left: 10px;"></span>Shoe Database</div>
+                            <hr>
+                            <p class="card-text">
+                                This site features an extensive database containing a comprehensive collection of popular sneakers.
+                                It serves as a valuable resource for enthusiasts, providing detailed information on a wide range of coveted footwear options.
+                            </p>
                         </div>
-                        <div class="float-end">
-                            <a href="@Url.Action("Index","Shoes")" class="btn btn-primary rounded-3 custom-btn ">Go To Browse</a>
+                        <div class="card-footer custom-footer">
+                            <div class="float-start">
+                                <h4 class="custom-highlight"></h4>
+                            </div>
+                            <div class="float-end">
+                                <a href="@Url.Action("Index","Shoes")" class="btn btn-primary rounded-3 custom-btn ">Go To Browse</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col d-flex justify-content-center align-items-center" style="text-align: center;">
+                    <div style="max-width: 315px;">
+                        <div style="box-shadow: 0px 0px 10px #802BB1; border: 3px solid #802BB1; border-radius: 12px;">
+                            <img src="/Assets/images/YellowIndexPIc.jpg" class="img-fluid" style="max-height: 315px;" />
+                        </div>
+                        <div class="card-footer custom-footer">
+                            <div class="float-start">
+                                <h4 class="custom-highlight"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col">
+                    <div class="card h-60 shadow custom-card">
+                        <div class="card-body">
+                            <div class="card-title m-1"><i class="fa-solid fa-briefcase"></i><span style="padding-left: 10px;"></span>Your Custom Locker</div>
+                            <hr>
+                            <p class="card-text">
+                                We offer users the opportunity to create their custom sneaker locker and calculate the total value of their sneaker collection.
+                                It provides a user-friendly platform for enthusiasts to curate their personal collection.
+                            </p>
+                        </div>
+                        <div class="card-footer custom-footer">
+                            <div class="float-start">
+                                <h4 class="custom-highlight"></h4>
+                            </div>
+                            <div class="float-end">
+                                <a href="@Url.Action("Index","ShoppingCart")" class="btn btn-primary rounded-3 custom-btn ">Go To Locker</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col">
-                <div class="card h-60 shadow custom-card">
-                    <div class="card-body">
-                        <div class="card-title m-1"><i class="fa-solid fa-briefcase"></i><span style="padding-left: 10px;"></span>Your Custom Locker</div>
-                        <hr>
-                        <p class="card-text">
-                            We offer users the opportunity to create their custom sneaker locker and calculate the total value of their sneaker collection.
-                            It provides a user-friendly platform for enthusiasts to curate their personal collection.
-                        </p>
-                    </div>
-                    <div class="card-footer custom-footer">
-                        <div class="float-start">
-                            <h4 class="custom-highlight"></h4>
-                        </div>
-                        <div class="float-end">
-                            <a href="@Url.Action("Index","ShoppingCart")" class="btn btn-primary rounded-3 custom-btn ">Go To Locker</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-60 shadow custom-card">
-                    <div class="card-body">
-                        <div class="card-title m-1"><i class="fa-regular fa-user"></i><span style="padding-left: 10px;"></span>Just For You</div>
-                        <hr>
-                        <p class="card-text">
-                            Users can enhance their experience by adding preferences to their accounts, enabling them to discover new sneakers that perfectly match their unique style.
-                            Find sneaker releases that resonate with Your personal taste.
-                        </p>
-                    </div>
-                    <div class="card-footer custom-footer">
-                        <div class="float-start">
-                            <h4 class="custom-highlight"></h4>
-                        </div>
-                        <div class="float-end">
-                            <button class="btn btn-primary rounded-3 custom-btn ">Go To Account</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
         </sections>
 
-        <!-- Feature Cards: -->
-        <!-- <section id="features" class="mt-5">
-            <h2>Features</h2>
-            <div class="cards row row-cols-1 row-cols-md-3 g-4">
-
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                    </div>
-
-                  <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-
-                  <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                  </div>
-            </div>
-            </div>
-        </section> -->
-
 
 </main>
+
+@*<div class="col">
+            <div class="card h-60 shadow custom-card">
+            <div class="card-body">
+            <div class="card-title m-1"><i class="fa-regular fa-user"></i><span style="padding-left: 10px;"></span>Just For You</div>
+            <hr>
+            <p class="card-text">
+            Users can enhance their experience by adding preferences to their accounts, enabling them to discover new sneakers that perfectly match their unique style.
+            Find sneaker releases that resonate with Your personal taste.
+            </p>
+            </div>
+            <div class="card-footer custom-footer">
+            <div class="float-start">
+            <h4 class="custom-highlight"></h4>
+            </div>
+            <div class="float-end">
+            <a href="@Url.Action("Account","Home")" class="btn btn-primary rounded-3 custom-btn ">Go To Account</a>
+            </div>
+            </div>
+            </div>
+            </div>*@

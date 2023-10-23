@@ -44,7 +44,7 @@
     This container holds all the dropdown buttons. I also added some margin (mr-2) to create space between the buttons. 
     This arrangement should place the dropdown buttons next to each other on the right side of the header, as you described. 
     Adjust the margin value (mr-2) to control the spacing as needed. -->
-    <header id="header" class="pb-5 custom-nav">
+    <header id="header" class="pb-5 custom-nav d-flex">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow custom-navbar">
             <div class="container container-fluid">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="d-flex align-items-center ml-auto">
                     <!-- Added a flex container to align buttons to the right -->
-                    <div class="mr-2">
+                    <div class="mr-3 m-2">
                         <!-- Added margin to create space between buttons -->
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -73,6 +73,9 @@
                                 <li class="nav-item">
                                     <a href="@Url.Action("Index","Shoes")" class="nav-link link-text">Browse</a>
                                 </li>
+                                 <li class="nav-item">
+                                    <a href="@Url.Action("Index","ShoppingCart")" class="nav-link link-text">Locker</a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="@Url.Action("Contact","Home")" class="nav-link link-text">Contact</a>
                                 </li>
@@ -81,18 +84,18 @@
                     </div>
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <div class="mr-2">
+                        <div class="mr-3 m-2">
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Account
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+                                        <a class="nav-link link-text" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
                                     </li>
                                     <li class="nav-item">
                                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                            <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                            <button type="submit" class="nav-link btn btn-link link-text">Logout</button>
                                         </form>
                                     </li>
                                 </ul>
@@ -101,23 +104,23 @@
                     }
                     @if (User.IsInRole("Admin"))
                     {
-                        <div class="mr-2">
+                        <div class="mr-3 m-2">
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type"button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Admin
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a href="@Url.Action("ListUsers", "Administration")" class="nav-link text-dark">Users</a>
+                                        <a href="@Url.Action("ListUsers", "Administration")" class="nav-link link-text ">Users</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="@Url.Action("ListRoles", "Administration")" class="nav-link link-text text-dark">Roles</a>
+                                        <a href="@Url.Action("ListRoles", "Administration")" class="nav-link link-text ">Roles</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="@Url.Action("Index", "Suppliers")" class="nav-link link-text text-dark">Suppliers</a>
+                                        <a href="@Url.Action("Index", "Suppliers")" class="nav-link link-text ">Suppliers</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="@Url.Action("Index", "Categories")" class="nav-link link-text text-dark">Categories</a>
+                                        <a href="@Url.Action("Index", "Categories")" class="nav-link link-text ">Categories</a>
                                     </li>
                                 </ul>
                             </div>
@@ -132,10 +135,10 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                                        <a class="nav-link link-text" asp-area="Identity" asp-page="/Account/Register">Register</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                                        <a class="nav-link link-text" asp-area="Identity" asp-page="/Account/Login">Login</a>
                                     </li>
                                 </ul>
                             </div>
@@ -149,22 +152,14 @@
     @RenderBody();
 
     <!-- FOOTER -->
-    <div class="FooterContainer mt-5">
+    <div class="mt-5">
         <hr class="custom-line">
         <div class="SocialIcons">
-            <a href=""><i class="fa-brands fa-github"></i></a>
-            <a href=""><i class="fa-solid fa-person"></i></a>
-            <a href=""><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/AidanMcQuill" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i></a>
+            <a href="http://www.aidanmcquillan.com/" target="_blank" rel="noreferrer"><i class="fa-solid fa-person"></i></a>
+            <a href="https://www.linkedin.com/in/aidan-mcquillan-67a245289" target="_blank" rel="noreferrer"><i class="fa-brands fa-linkedin"></i></a>
         </div>
-        <div class="footerNav mobile-hidden">
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Browse</a></li>
-                <li><a href="">Locker</a></li>
-                <li><a href="">Account</a></li>
-                <li><a href="">Contact</a></li>
-            </ul>
-        </div>
+       
         <div class="footerBottom">
             <p>Copyright &copy; 2023: Designed by <span class="Designer">Aidan McQuillan</span></p>
         </div>

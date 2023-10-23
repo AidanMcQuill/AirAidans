@@ -38,6 +38,8 @@ namespace AirAidans.Controllers
         }
 
         //Card View
+
+
         public async Task<IActionResult> ShoeCards(string searchTerm, int categoryId, int page = 1)
         {
             int pageSize = 6;

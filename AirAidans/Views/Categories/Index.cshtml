@@ -4,56 +4,61 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Categories:</h1>
+<h1 class="heading-text">Categories</h1>
 
-<div class="row">
-    <div align="center" class="offset-3 col-md-6 mb-3">
-        <button id="ToggleCategoryCreate" class="btn-primary btn">Add New Category</button>
+<div class="container">
+
+    
+    <div class="row">
+        <div align="center" class="offset-3 col-md-6 mb-3">
+            <button id="ToggleCategoryCreate" class="custom-btn btn">Add New Category</button>
+        </div>
     </div>
-</div>
 
-<div id="CategoryCreate">
-    <partial name="CategoryCreate" model="new AirAidans.DATA.EF.Models.Category()" />
-</div>
-
-<div class="row">
-    <div class="offset-3 col-md-6">
-        <div id="MessageContent" class="text-center"></div>
+    <div id="CategoryCreate">
+        <partial name="CategoryCreate" model="new AirAidans.DATA.EF.Models.Category()" />
     </div>
+
+    <div class="row">
+        <div class="offset-3 col-md-6">
+            <div id="MessageContent" class="text-center"></div>
+        </div>
+    </div>
+
+    <table class="table t-text" id="CategoryTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryDescription)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryDescription)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.CategoryId" style="color: #802bb1;"><i class="fa-regular fa-pen-to-square"></i></a> |
+                        <a asp-action="Details" asp-route-id="@item.CategoryId" style="color: #802bb1;"><i class="fa-solid fa-list"></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.CategoryId" style="color: #802bb1;"><i class="fa-regular fa-trash-can"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 
-<table class="table" id="CategoryTable">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryDescription)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryDescription)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CategoryId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
-@*Create Ajax Model, fix later 
+@*Create Ajax Model, fix later
 <div class="modal fade" id="CategoryDetails" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -1,115 +1,99 @@
-﻿@model Dictionary<int, AirAidans.Models.CartItemViewModel>
-
+﻿@model Dictionary<int, AirAidans.UI.MVC.Models.CartItemViewModel>
 
 @{
     ViewData["Title"] = "Cart";
     decimal? cartTotal = 0;
 }
 
-<section class="product_section layout_padding">
+<section class="pt-5">
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
                 Your <span>Locker</span>
             </h2>
-            @*<p align="center">
-                <a asp-action="TiledProducts" asp-controller="Products" class="btn btn-info">
-                    Back to Shopping
-                </a>
-            </p>*@
         </div>
 
-        @if (Model.Count == 0)
-        {
-            <p class="alert alert-warning text-center">
-                @ViewBag.Message
-            </p>
-        }
-        else
-        {
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Shoe</th>
-                        <th>Size</th>
-                        <th>Model</th>
-                        <th>Price</th>
-                        <th>Total</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            @*<td>
-                                <img src="~/images/t_@item.Value.Shoe.ShoeImage" alt="@item.Value.Shoe.ShoeModel" />
-                            </td>*@
-                            <td>
-                                <form asp-action="UpdateCart">
-                                    <input type="hidden" name="ShoeId" value="@item.Key" />
-                                    <input type="text" name="qty" value="@item.Value.Qty" class="
-                                                form-control d-block mx-auto text-center w-50" />
-                                    <input type="submit" value="Update Cart" class="btn btn-primary btn-sm" />
-                                </form>
-                            </td>
-                            <td>
-                                @item.Value.Shoe.ShoeId
-
-                            </td>
-                            <td>
-                                @string.Format($"{@item.Value.Shoe.Price:c}")
-                            </td>
-                            <td>
-                                @{
-                                    //Calculate the line total and the cart total
-                                    //line total will be displayed here for each individual line item
-                                    //cart total will be displayed after all of the line items
-                                    decimal? lineTotal = item.Value.Qty * item.Value.Shoe.Price;//total for 1 line item
-                                    cartTotal += lineTotal;//total for ALL items
-                                }
-                                @string.Format($"{lineTotal:c}")
-                            </td>
-                            <td>
-                                <a>
-                                    <a asp-action="RemoveFromCart"
-                                       asp-controller="ShoppingCart"
-                                       asp-route-id="@item.Key"
-                                       class="btn btn-danger">
-                                        Remove From Cart
-
-                                    </a>
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
-            <div class="alert alert-success text-center">
-                <p>
-                    Your total before taxes and shipping is @string.Format($"{cartTotal:c}").
+        <div class="text-center">
+            @if (Model.Count == 0)
+            {
+                <p class="alert alert-warning">
+                    @ViewBag.Message
                 </p>
+            }
+            else
+            {
+                <table class="table t-text">
+                    <thead>
+                        <tr>
+                            <th>Shoe</th>
+                            <th>Quantity</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>total</th>
+                            <th></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                @*Shoe Image*@
+                                <td>
+                                    <img src="~/Assets/images/t_@item.Value.Shoe.ShoeImage" class="img-fluid" alt="@item.Value.Shoe.Model" />
+                                <td>
 
-                @if (User.Identity.IsAuthenticated)
-                {
+                                    @*Shoe Qty*@
+                                    <form asp-action="UpdateCart">
+                                        <input type="hidden" name="ShoeId" value="@item.Key" />
+                                        <input type="text" name="qty" value="@item.Value.Qty" class="form-control d-block mx-auto text-center w-50" />
+                                        <input type="submit" value="Update" class="btn custom-btn btn-sm m-2" />
+                                    </form>
+                                </td>
 
-                    <p>
+                                @*Shoe Name*@
+                                <td>
+                                    @item.Value.Shoe.Model
+                                </td>
 
-                        <a asp-action="SubmitOrder" class="btn btn-primary">
-                            Submit Order
-                        </a>
+                                @*Shoe Price*@
+                                <td>
+                                    @string.Format($"{@item.Value.Shoe.Price:c}")
+                                </td>
 
+                                @*Total*@
+                                <td>
+                                    @{
+                                        decimal? lineTotal = item.Value.Qty * item.Value.Shoe.Price;
+                                        cartTotal += lineTotal;
+                                    }
+                                    @string.Format($"{lineTotal:c}")
+                                </td>
+                                <td>
+                                    <a>
+                                        <a asp-action="RemoveFromCart" asp-controller="ShoppingCart" asp-route-id="@item.Key" class="btn btn-danger">
+                                            Remove From Locker
+                                        </a>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="alert alert-custom">
+                    <p class="t-text">
+                        The value of your locker is @string.Format($"{cartTotal:c}").
                     </p>
+                   
+                </div>
 
-                }
-                else
-                {
-                    <p>To place this order, you must be logged in.</p>
-                    <button disabled="disabled" class="btn btn-primary">Submit Order</button>
-                }
-
-            </div>
+                <p align="center">
+                    <a asp-action="Index" asp-controller="Shoes" class="btn btn-danger">
+                        Return to shoes
+                    </a>
+                </p>
+           
         }
     </div>
 </section>
