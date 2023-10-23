@@ -3,6 +3,7 @@ using AirAidans.DATA.EF.Models;
 using Microsoft.AspNetCore.Identity;
 using AirAidans.Models;
 using Newtonsoft.Json;
+using AirAidans.UI.MVC.Models;
 
 namespace AirAidans.Controllers
 {
@@ -147,12 +148,12 @@ namespace AirAidans.Controllers
 
         }
 
-        public IActionResult UpdateCart(int productId, int qty)
+        public IActionResult UpdateCart(int shoeId, int qty)
         {
             var sessionCart = HttpContext.Session.GetString("cart");
             var shoppingCart = JsonConvert.DeserializeObject<Dictionary<int, CartItemViewModel>>(sessionCart);
 
-            shoppingCart[productId].Qty = qty;
+            shoppingCart[shoeId].Qty = qty;
 
 
             var JsonCart = JsonConvert.SerializeObject(shoppingCart);
@@ -161,58 +162,7 @@ namespace AirAidans.Controllers
             return RedirectToAction("Index");
         }
 
-        //public async Task<IActionResult> SubmitOrder()
-        //{
-        //    #region Planning out Order Submission
-        //    //BIG PICTURE PLAN
-        //    //Create Order object -> then save to the DB
-        //    //  - OrderDate
-        //    //  - UserId
-        //    //  - ShipToName, ShipCity, ShipState, ShipZip --> this info needs to be pulled from the UserDetails record
-        //    //Add the record to _context
-        //    //Save DB changes
-
-        //    //Create OrderProducts object for each item in the cart
-        //    //  - ProductId -> available from cart
-        //    //  - OrderId -> from Order object
-        //    //  - Qty -> available from cart
-        //    //  - ProductPrice -> available from cart
-        //    //Add the record to _context
-        //    //Save DB changes
-        //    #endregion
-
-        //    var userId = (await _userManager.GetUserAsync(HttpContext.User))?.Id;
-
-        //    var userDetails = _context.UserDetails.Find(userId);
-
-        //    //var order = new Locker()
-        //    //{
-        //    //    LockerId = lockerId,
-        //    //    UserId = userId,
-        //    //    Shoe_Id = shoeId
-        //    //};
-
-        //    //_context.Orders.Add(order);
-
-        //    //var sessionCart = HttpContext.Session.GetString("cart");
-        //    //var shoppingCart = JsonConvert.DeserializeObject<Dictionary<int, CartItemViewModel>>(sessionCart);
-
-        //    //foreach (var item in shoppingCart)
-        //    //{
-        //    //    OrderProduct orderProduct = new OrderProduct()
-        //    //    {
-        //    //        OrderId = order.OrderId,
-        //    //        ProductId = item.Key,
-        //    //        ProductPrice = item.Value.Product.ProductPrice,
-        //    //        Quantity = (short)item.Value.Qty
-        //    //    };
-
-        //    //    order.OrderProducts.Add(orderProduct);
-        //    //}
-
-        //    _context.SaveChanges();
-        //    return RedirectToAction("Index", "Orders");
-        //}
+       
     }
 }
 

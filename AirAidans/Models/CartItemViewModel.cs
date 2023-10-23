@@ -1,6 +1,6 @@
 ﻿using AirAidans.DATA.EF.Models;
 
-namespace AirAidans.Models
+namespace AirAidans.UI.MVC.Models
 {
     public class CartItemViewModel
     {
