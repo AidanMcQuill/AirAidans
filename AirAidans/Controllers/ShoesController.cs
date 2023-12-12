@@ -11,6 +11,8 @@ using System.Drawing;
 using AirAidans.UI.MVC.Utilities;
 using Microsoft.AspNetCore.Http;
 using X.PagedList;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Drawing.Printing;
 
 namespace AirAidans.Controllers
 {
@@ -20,6 +22,7 @@ namespace AirAidans.Controllers
 
         private readonly AirAidansContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
+
         
         public ShoesController(AirAidansContext context, IWebHostEnvironment webHostEnvironment)
         {
@@ -153,6 +156,7 @@ namespace AirAidans.Controllers
                     {
                         //Generate a unique filename
                         shoe.ShoeImage = Guid.NewGuid() + ext;
+                       
 
                         //Save the file to the web server (here, saving to wwwroot/images)
                         //To access wwwroot, add a property to the controller for the _webHostEnvironment (see the top of this class for our example)
@@ -228,6 +232,7 @@ namespace AirAidans.Controllers
         [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("ShoeId,Brand,Model,Size,Color,Sku,CategoryId,SupplierId,ShoeDescription,ShoeImage,Image,Price")] Shoe shoe)
         {
+
             if (id != shoe.ShoeId)
             {
                 return NotFound();
@@ -304,7 +309,7 @@ namespace AirAidans.Controllers
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", shoe.CategoryId);
             ViewData["SupplierId"] = new SelectList(_context.Suppliers, "SupplierId", "SupplierName", shoe.SupplierId);
-            return View(shoe);
+            return View (shoe);
         }
 
         // GET: Shoes/Delete/5

@@ -15,6 +15,15 @@ namespace AirAidans
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(policy =>
+                {
+                    policy.WithOrigins("OriginPolicy", "http://airaidans.aidanmcquillan.com/",
+                        "http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+                });
+            });
+
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>

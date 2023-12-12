@@ -79,7 +79,9 @@
 
                         <div class="d-inline-flex m-2 justify-content-between">
                             <div class="cart-btn m-2">
-                                <button class="btn custom-btn">Add To Cart</button>
+                                <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.ShoeId">
+                                <span class="btn custom-btn">Add To Cart</span>
+                                </a>
                             </div>
 
                             <div class="shoe-info t-text m-3">
